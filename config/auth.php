@@ -30,9 +30,9 @@ return [
     | All authentication drivers have a user provider. This defines how the
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
-    |
+    |救い出す
     | Supported: "session", "token"
-    |
+    |$fillableが複数代入時における属性の「ホワイトリスト」として動作する一方、$guardedの使用を選ぶことができます。$guardedプロパティは複数代入したくない属性の配列です。配列に含まれない他の属性は全部複数代入可能です。そのため$guardedは「ブラックリスト」として働きます。重要なのは、$fillableか$guardedのどちらか一方を使用することです。両方一度には使えません。以下の例は、priceを除いた全属性に複数代入できます。
     */
 
     'guards' => [

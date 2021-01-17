@@ -17,6 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
+        'disp_name', 'profile', 'icon_link'
     ];
 
     /**
@@ -36,4 +37,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 属性に対するモデルのデフォルト値
+     * class内で無名関数をプロパティに代入すると
+     * Fatal error: Constant expression contains invalid operations
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'disp_name' => 'guest',
+        'profile' => 'よろしくお願いします。',
+        'icon_link' => 'guest.png',
+        // 'blacklist' => false,
+    ];
+
+    /**
+     * RoleModelへのリレーション
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
 }

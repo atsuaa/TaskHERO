@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <img src="{{$img_path}}" alt="">
                 </div>
             </div>
         </div>

@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('disp_name');
             $table->text('profile');
             $table->string('icon_link');
+            $table->integer('current_task_count');
+            $table->integer('done_task_count');
         });
     }
 

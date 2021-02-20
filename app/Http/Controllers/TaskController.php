@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Task;
 use Illuminate\Http\Request;
 
+use function Psy\debug;
+
 class TaskController extends Controller
 {
     /**
@@ -14,7 +16,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::all();
+        
+        // dump($tasks);
+        return view('task.index', compact('tasks'));
     }
 
     /**
@@ -24,7 +29,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -35,7 +40,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, Task::$rules);
+        $task = new Task;
+        $form = $request->all();
+        unset($form['_token']);
+        $task->fill($form)->save();
+        return redirect('/task');
     }
 
     /**
@@ -55,9 +65,10 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit(Request $request)
     {
-        //
+        $task = Task::find($request->id);
+        return view('task.edit', compact('task'));
     }
 
     /**
@@ -67,9 +78,13 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request)
     {
-        //
+        $task = Task::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);
+        $task->fill($form)->save();
+        return redirect('/task/edit?id='.$request->id);
     }
 
     /**
@@ -78,8 +93,9 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(Request $request)
     {
-        //
+        Task::find($request->id)->delete();
+        return redirect('/task');
     }
 }

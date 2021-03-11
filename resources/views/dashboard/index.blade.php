@@ -2,10 +2,16 @@
 @section('content')
 <div class="">
     <div class="mb-3">
-        <p class="h4 mb-0 text-info">Reasons</p>
-        <div style="overflow-y: scroll; max-height: 26rem">
+        <div class="row justify-content-between">
+            <p class="h4 mb-0 text-danger col">Tasks</p>
+            <div class="toggle-switch col-4 font-weight-bold text-primary">
+                <span>open</span>
+                <span class="ml-1">close</span>
+            </div>
+        </div>
+        <div style="overflow-y: scroll; overflow-x: hidden; max-height: 26rem">
             <div class="row">
-                @each('components.dashboard.reasonbox', $reasons, 'reason')
+                @each('components.dashboard.taskbox', $tasks, 'task')
             </div>
         </div>
     </div>
@@ -18,27 +24,22 @@
                 <span class="ml-1">close</span>
             </div>
         </div>
-        <div style="overflow-y: scroll; max-height: 26rem">
+        <div style="overflow-y: scroll; overflow-x: hidden; max-height: 26rem">
             <div class="row">
                 @each('components.dashboard.goalbox', $goals, 'goal')
             </div>
         </div>
     </div>
-    
+
     <div class="mb-3">
-        <div class="row justify-content-between">
-            <p class="h4 mb-0 text-danger">Tasks</p>
-            <div class="toggle-switch col-4 font-weight-bold text-primary">
-                <span>open</span>
-                <span class="ml-1">close</span>
-            </div>
-        </div>
-        <div style="overflow-y: scroll; max-height: 26rem">
+        <p class="h4 mb-0 text-info">Reasons</p>
+        <div style="overflow-y: scroll; overflow-x: hidden; max-height: 26rem">
             <div class="row">
-                @each('components.dashboard.taskbox', $tasks, 'task')
+                @each('components.dashboard.reasonbox', $reasons, 'reason')
             </div>
         </div>
     </div>
+    
 </div>
 
 <script>

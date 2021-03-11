@@ -65,9 +65,9 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $task = Task::find($request->id);
+        $task = Task::find($id);
         return view('task.edit', compact('task'));
     }
 

@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/task', 'TaskController@index');
 Route::get('/task/create', 'TaskController@create');
 Route::post('/task/create', 'TaskController@store');
-Route::get('/task/edit', 'TaskController@edit');
+Route::get('/task/edit/{id}', 'TaskController@edit');
 Route::post('/task/edit', 'TaskController@update');
 Route::post('/task/destroy', 'TaskController@destroy');
 

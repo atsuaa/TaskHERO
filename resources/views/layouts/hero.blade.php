@@ -24,13 +24,13 @@
         @include('components.header')
     </header>
 
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row mt-2">
             <nav class="d-none d-md-block col-md-2 bg-light sidebar">
                 @include('components.sidenav')
             </nav>
             <!-- Begin page content -->
-            <main role="main" class="col-md-9 flex-shrink-0">
+            <main role="main" class="col-md-9 flex-shrink-0 px-1">
                 @yield('content')
             </main>
         </div>
